@@ -1,0 +1,5 @@
+# 自测产物(截图/日志),不入库
+selftest/*.png
+selftest/*.log
+# 打包产物
+dist/

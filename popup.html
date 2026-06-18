@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 14px/1.5 "Segoe UI", system-ui, sans-serif; width: 320px; margin: 0; padding: 16px; background: #1f1f1f; color: #eee; }
+  h3 { margin: 0 0 4px; font-size: 15px; }
+  .sub { font-size: 11px; opacity: .55; margin-bottom: 12px; }
+  label { display: block; margin: 12px 0 4px; font-size: 12px; opacity: .8; }
+  input[type=password], input[type=text], select { box-sizing: border-box; padding: 7px 8px; background: #2a2a2a; color: #eee; border: 1px solid #444; border-radius: 5px; font-size: 13px; }
+  select#targetLang { width: 100%; }
+  input:focus, select:focus { outline: none; border-color: #0a6cff; }
+  .keyrow { display: flex; gap: 6px; align-items: center; }
+  .keyrow input { flex: 1; }
+  button { padding: 7px 10px; background: #0a6cff; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 13px; }
+  button:hover { background: #2a7dff; }
+  button.sec { background: #3a3a3a; }
+  button.sec:hover { background: #4a4a4a; }
+  #save { width: 100%; margin-top: 14px; padding: 9px; font-size: 14px; }
+  #status, #testResult { font-size: 12px; min-height: 15px; margin-top: 6px; }
+  .sect { margin-top: 14px; padding-top: 12px; border-top: 1px solid #333; }
+  .sect-title { font-size: 12px; opacity: .6; margin-bottom: 4px; }
+  .pref { display: flex; align-items: center; justify-content: space-between; margin: 9px 0; }
+  .pref label { margin: 0; font-size: 13px; opacity: .9; }
+  select.small { padding: 4px 6px; font-size: 12px; }
+  input[type=range] { width: 130px; accent-color: #0a6cff; }
+  .tip { margin-top: 12px; font-size: 11px; opacity: .55; line-height: 1.5; }
+  a { color: #6cf; }
+</style>
+</head>
+<body>
+  <h3>Teams 双语字幕</h3>
+  <div class="sub">日语字幕 → DeepSeek → 浮层双语</div>
+
+  <label>DeepSeek API Key</label>
+  <div class="keyrow">
+    <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" spellcheck="false">
+    <button id="testBtn" class="sec" type="button">测试</button>
+  </div>
+  <div id="testResult"></div>
+
+  <label>目标语言</label>
+  <select id="targetLang"></select>
+
+  <div class="sect">
+    <div class="sect-title">默认偏好(下次进会 / 刷新后套用)</div>
+    <div class="pref"><label>主题</label>
+      <select id="theme" class="small"><option value="dark">深色</option><option value="light">浅色</option></select></div>
+    <div class="pref"><label>字号</label>
+      <select id="fontSize" class="small"><option value="12">小</option><option value="14">中</option><option value="16">大</option><option value="18">特大</option></select></div>
+    <div class="pref"><label>默认显示原文</label>
+      <input id="showOrig" type="checkbox"></div>
+    <div class="pref"><label>默认透明度</label>
+      <input id="opacity" type="range" min="0.15" max="1" step="0.01"></div>
+  </div>
+
+  <div class="sect">
+    <div class="sect-title">翻译缓存</div>
+    <div class="pref"><span id="cacheInfo" style="opacity:.85;font-size:13px">已缓存 … 条</span>
+      <button id="clearBtn" class="sec" type="button">清空</button></div>
+  </div>
+
+  <button id="save">保存</button>
+  <div id="status"></div>
+
+  <div class="tip">
+    进 Teams 网页会议、开实时字幕,浮层即自动出现。<br>
+    Key 只存本机浏览器,不上传任何第三方(仅发往 DeepSeek)。<br>
+    没 Key?去 <a href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a> 申请。
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
