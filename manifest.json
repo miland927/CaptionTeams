@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Teams 双语字幕翻译 (DeepSeek)",
+  "name": "Teams 双语字幕翻译 (DeepSeek) BETA",
   "version": "1.4.0",
   "description": "网页版 Teams 实时字幕 → DeepSeek → 右下角双语浮层。纯浏览器端，API Key 只存本机，无需任何后台服务。",
   "permissions": ["storage"],
@@ -30,7 +30,7 @@
         "https://teams.microsoft.com/*",
         "https://*.teams.microsoft.com/*",
         "https://teams.live.com/*",
-        "https://*.cloud.microsoft/*"
+        "https://teams.cloud.microsoft/*"
       ],
       "js": ["content.js"],
       "run_at": "document_idle"
